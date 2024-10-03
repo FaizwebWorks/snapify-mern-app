@@ -6,8 +6,6 @@ import connectDb from "./config/db.js";
 import userRoutes from "./routes/user.routes.js";
 import postRoutes from "./routes/post.routes.js";
 import messageRoutes from "./routes/message.routes.js";
-import path from "path";
-
 dotenv.config({ path: "./.env" });
 
 const app = express();

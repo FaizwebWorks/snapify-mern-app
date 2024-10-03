@@ -9,9 +9,12 @@ import axios from "axios";
 import { useToast } from "@/hooks/use-toast";
 import { Link, useNavigate } from "react-router-dom";
 import { Loader2 } from "lucide-react";
+import { useDispatch } from "react-redux";
+import { setAuthUser } from "@/redux/authSlice";
 
 const Login = () => {
   const { toast } = useToast();
+  const dispatch = useDispatch()
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
@@ -70,11 +73,12 @@ const Login = () => {
           }
         );
         if (res.data.success) {
+          dispatch(setAuthUser(res.data.user))
           navigate("/");
           toast({
-            title: "Logged in successfully",
-            description: "Welcome to Snapify!",
+            title: res.data.message,
             variant: "success",
+            position: "bottom"
           });
           setFormData({
             email: "",

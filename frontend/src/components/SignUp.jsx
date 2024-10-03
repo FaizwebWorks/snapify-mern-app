@@ -78,8 +78,7 @@ const SignUp = () => {
         if (res.data.success) {
           navigate("/login");
           toast({
-            title: "Account created successfully",
-            description: "You can now login",
+            title: res.data.message,
             variant: "success",
           });
           setFormData({
@@ -178,7 +177,7 @@ const SignUp = () => {
         {isLoading ? (
           <Button className="mt-4 bg-blue-400 hover:bg-blue-400 text-white p-3 rounded-xl text-lg font-semibold w-full flex items-center justify-center">
             <Loader2 className="w-4 h-4 animate-spin mr-2" />
-            Creating Account...
+            Creating Account..
           </Button>
         ) : (
           <Button
